@@ -16,3 +16,5 @@ export default {
   components: { MainAbout, MainSkill, MainPortfolio, MainContact },
 };
 </script>
+
+<style lang="scss" scoped></style>
