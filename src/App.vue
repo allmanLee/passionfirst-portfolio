@@ -9,7 +9,7 @@
 </template>
 <script>
 //import { defineComponent } from "@vue/composition-api";
-import AppHeader from "./components/AppHeader";
+import AppHeader from "./components/AppHeader_J";
 import AppFooter from "./components/AppFooter";
 export default {
   data() {

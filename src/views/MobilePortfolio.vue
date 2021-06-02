@@ -7,18 +7,18 @@
       <m-swiper-banner
         :ChangeSwiperData="b"
         @ChangedSwiper="ChangedSwiperFirst"
-        :data="data"
+        :portfolioData="portfolioData"
       ></m-swiper-banner>
       <m-swiper-table
         :ChangeSwiperData="a"
         @ChangedSwiper="ChangedSwiperSecond"
-        :data="data"
+        :portfolioData="portfolioData"
       ></m-swiper-table>
     </div>
   </div>
 </template>
 <script>
-import { mapActions, mapState } from "vuex";
+import portfolioDB from "../assets/data/portfolio.json";
 // Import Swiper Vue.js components - swiper-banner
 import MSwiperBanner from "./../components/common/MSwiperBanner";
 import MSwiperTable from "./../components/common/MSwiperTable";
@@ -29,20 +29,15 @@ export default {
       indexChanged: 0,
       a: null,
       b: null,
+      portfolioData: portfolioDB.data,
     };
   },
-  mounted() {
-    this.init();
-  },
+  mounted() {},
   components: {
     MSwiperBanner,
     MSwiperTable,
   },
-  computed: {
-    ...mapState({
-      data: "portfolio", //#2
-    }),
-  },
+  computed: {},
   methods: {
     ChangedSwiperFirst: function (val) {
       this.a = val;
@@ -53,9 +48,6 @@ export default {
       console.log(this.b);
     },
   },
-  ...mapActions({
-    init: "portfolioInit",
-  }),
 };
 </script>
 <style lang="scss" scoped>

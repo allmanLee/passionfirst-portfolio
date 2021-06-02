@@ -2,11 +2,13 @@
   <div id="bSwiperTableItems">
     <h3 class="keywords-title">STACK KEYWORDS</h3>
     <ul class="keywords-items">
-      <li
-        class="keywords-item"
-        v-for="(item, index) in items"
-        :key="index"
-      ></li>
+      <li class="keywords-item" v-for="(item, index) in items" :key="index">
+        <img
+          class="stack-cate-img"
+          :src="require(`../../assets/img/icon-img/1x/${item}.png`)"
+          alt="icon"
+        />
+      </li>
     </ul>
     <div class="banner-buttons">
       <app-button
@@ -24,15 +26,24 @@
     </div>
     <div class="table-item-wrap">
       <table class="table-item">
-        <tr v-for="(item, index) in items" :key="index">
+        <tr v-for="(item, index) in Tableitems" :key="index">
           <td>
-            <img class="cate-icon" src="" height="12px" alt="" />
+            <img
+              class="cate-icon"
+              :src="
+                require(`../../assets/img/icon-img/1x/${item.TableCate}.png`)
+              "
+              alt="icon"
+              height="12px"
+            />
           </td>
           <td>
-            SOURCE
-            <i class="right-btn"
-              ><img src="../../assets/img/SVG/right-icon.svg"
-            /></i>
+            <a href="#">
+              {{ item.TableSource }}
+              <i class="right-btn"
+                ><img src="../../assets/img/SVG/right-icon.svg"
+              /></i>
+            </a>
           </td>
         </tr>
       </table>
@@ -44,7 +55,8 @@ import AppButton from "./AppButton";
 export default {
   data() {
     return {
-      items: ["1", "2"],
+      items: this.portfolioData.StackItems,
+      Tableitems: this.portfolioData.TableItems,
     };
   },
   components: { AppButton },
@@ -110,16 +122,20 @@ export default {
 }
 
 .table-item-wrap {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 1200px;
   margin: 40px auto;
 }
 .table-item {
-  box-sizing: border-box;
-  width: 100%;
+  width: 94%;
   margin: 0px 20px;
   font-size: 16px;
 }
-
+.stack-cate-img {
+  width: 40px;
+  height: 40px;
+}
 .table-item > tr {
   border-bottom: 2px solid #f3f3f3;
 }
@@ -142,7 +158,7 @@ export default {
   height: 20px;
   position: absolute;
   vertical-align: middle;
-  right: 40px;
+  right: 10px;
 }
 .right-btn > img {
   height: 20px;

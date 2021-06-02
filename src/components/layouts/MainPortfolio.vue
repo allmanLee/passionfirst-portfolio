@@ -1,17 +1,26 @@
 <template>
   <div id="mainPortfolio">
     <div class="portfolio-top">
-      <h1 id="portfolioTitle">Portfolio</h1>
+      <h1 id="portfolioTitle">Portfolio {{ changedCate }}</h1>
       <div class="banner-buttons">
         <input
           id="pc-btn"
           type="radio"
           name="cate"
           class="btn-2"
+          v-model="changedCate"
+          value="PC"
           checked
-        /><label for="pc-btn">PC</label>
-        <input id="mobile-btn" type="radio" name="cate" class="btn-2" />
-        <label for="mobile-btn">Mobile</label>
+        /><label for="pc-btn" @click="changeCate">PC</label>
+        <input
+          id="mobile-btn"
+          type="radio"
+          name="cate"
+          class="btn-2"
+          v-model="changedCate"
+          value="Mobile"
+        />
+        <label for="mobile-btn" @click="changeCate">Mobile</label>
       </div>
     </div>
     <!-- <div id="cate-gnb">
@@ -21,18 +30,18 @@
       <b-swiper-banner
         :ChangeSwiperData="b"
         @ChangedSwiper="ChangedSwiperFirst"
-        :data="data"
+        :portfolioData="portfolioData"
       ></b-swiper-banner>
       <b-swiper-table
         :ChangeSwiperData="a"
         @ChangedSwiper="ChangedSwiperSecond"
-        :data="data"
+        :portfolioData="portfolioData"
       ></b-swiper-table>
     </div>
   </div>
 </template>
 <script>
-import { mapActions, mapState } from "vuex";
+import portfolioDB from "../../assets/data/portfolio.json";
 // Import Swiper Vue.js components - swiper-banner
 import BSwiperBanner from "../common/BSwiperBanner";
 import BSwiperTable from "../common/BSwiperTable";
@@ -43,19 +52,26 @@ export default {
       indexChanged: 0,
       a: null,
       b: null,
+      changedCate: "PC",
+      portfolioData: portfolioDB.data,
     };
   },
-  mounted() {
-    this.init();
-  },
+
+  mounted() {},
   components: {
     BSwiperBanner,
     BSwiperTable,
   },
-  computed: {
-    ...mapState({
-      data: "portfolio", //#2
-    }),
+  watch: {
+    // changedCate: function (cate) {
+    //   let changedArr = portfolioDB.data.filter((val) => {
+    //     return val.Cate.includes(cate);
+    //   });
+    //   setTimeout(() => {
+    //     this.portfolioData = changedArr;
+    //     console.log(changedArr);
+    //   }, 1000);
+    // },
   },
   methods: {
     ChangedSwiperFirst: function (val) {
@@ -66,9 +82,6 @@ export default {
       this.b = val;
       console.log(this.b);
     },
-    ...mapActions({
-      init: "portfolioInit",
-    }),
   },
 };
 </script>
@@ -76,17 +89,19 @@ export default {
 #mainPortfolio {
   width: 100%;
   height: 100vh;
+  margin-top: 60px;
 }
 .portfolio-top {
   position: relative;
   max-width: 1200px;
   height: 120px;
-  margin: 0 20px;
+  margin: auto;
 }
 #portfolioTitle {
   position: absolute;
   height: 48px;
   // padding: 10px 20px;
+  padding-left: 20px;
   margin: 40px auto 20px auto;
   text-align: left;
   font-family: "Noto Sans KR";
@@ -102,9 +117,9 @@ export default {
   height: 48px;
   margin: 40px auto 20px auto;
   float: right;
+  padding-right: 20px;
 }
 .btn-2 {
-  box-sizing: border-box;
   margin-top: 10px;
 }
 label {

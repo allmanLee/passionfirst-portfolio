@@ -3,35 +3,39 @@
     <div class="banner-item-wrap">
       <div class="banner-item-left">
         <dt class="banner-item-title">
-          <h2 class="banner-item-category">PC / Mobile</h2>
-          <h1 class="banner-item-name">에니메이션 스트리밍 사이트</h1>
-          <h3 class="banner-item-subname">사이트명 / 라프텔</h3>
+          <h2 class="banner-item-category">{{ portfolioData.Cate }}</h2>
+          <h1 class="banner-item-name">{{ portfolioData.Name }}</h1>
+          <h3 class="banner-item-subname">{{ portfolioData.SubName }}</h3>
         </dt>
         <p class="banner-txt">
-          회원가입, 로그인에 보안을 적용 사용자 편리성을 생각하며 UI설계
+          {{ portfolioData.Script }}
         </p>
         <ul class="keywords-items">
-          <li
-            class="keywords-item"
-            v-for="(item, index) in items"
-            :key="index"
-          ></li>
+          <li class="keywords-item" v-for="(item, index) in items" :key="index">
+            <img
+              class="stack-cate-img"
+              :src="require(`../../assets/img/icon-img/1x/${item}.png`)"
+              alt="icon"
+            />
+          </li>
         </ul>
         <div class="banner-buttons">
           <app-button
             :styles="'app-button-cta'"
             :contents="'작업과정'"
-            @clicked="buttonClicked"
+            @update="workProcessClicked"
           />
           <app-button
             class="btn-2"
-            :styles="'app-button-ghost'"
+            :styles="'app-button-white'"
             :contents="'사이트로 바로가기'"
-            @clicked="buttonClicked"
+            @update="goToClicked"
           />
         </div>
       </div>
-      <div class="banner-item-right"></div>
+      <div class="banner-item-right">
+        <img class="banner-img" :src="bannerImgUrl" alt="portfolio.Name" />
+      </div>
     </div>
   </div>
 </template>
@@ -40,14 +44,27 @@ import AppButton from "./AppButton";
 export default {
   data() {
     return {
-      items: ["1", "2"],
+      items: this.portfolioData.StackItems,
     };
+  },
+  computed: {
+    bannerImgUrl: function () {
+      return require(`../../assets/img/portfolioPNG/${this.portfolioData.EngId}.png`);
+    },
   },
   components: { AppButton },
   props: ["portfolioData"],
   methods: {
-    buttonClicked: function (e) {
-      console.log(e);
+    workProcessClicked: function () {
+      this.turnToPage();
+      console.log("clicked");
+    },
+    goToClicked: function () {
+      console.log("clicked");
+    },
+    //페이지 이동 함수
+    turnToPage: function () {
+      this.$router.push("/portfolioPage/" + `${this.portfolioData.EngId}`);
     },
   },
 };
@@ -57,7 +74,7 @@ export default {
 #bSwiperBannerItems {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 600px;
   text-align: center;
   background-color: #f3f3f3;
 }
@@ -77,6 +94,7 @@ export default {
   text-align: left;
   float: left;
   z-index: 2;
+  background-color: white;
 }
 .banner-item-title {
   font-family: "Noto Sans KR";
@@ -88,7 +106,7 @@ export default {
   font-weight: 500;
 }
 .banner-item-name {
-  font-size: 21px;
+  font-size: 32px;
   font-weight: 700;
 }
 .banner-item-subname {
@@ -116,7 +134,10 @@ export default {
   border-radius: 50%;
   background-color: plum;
 }
-
+.stack-cate-img {
+  width: 36px;
+  height: 36px;
+}
 //banner-button css
 .banner-buttons button {
   margin-top: 38px;
@@ -127,12 +148,18 @@ export default {
 
 //banner-item-right
 .banner-item-right {
-  width: 600px;
+  width: 800px;
   height: 400px;
   float: right;
 }
+
 .banner-item-right ::after {
   position: absolute;
   clear: both;
+}
+.banner-img {
+  box-sizing: border-box;
+  width: 600px;
+  padding-top: 30px;
 }
 </style>

@@ -15,7 +15,7 @@
         :key="index"
         :index="index"
         :virtualIndex="index"
-        ><b-swiper-banner-items :portfolioData="data" />
+        ><b-swiper-banner-items :portfolioData="slideContent" />
       </swiper-slide>
     </swiper>
   </div>
@@ -33,17 +33,14 @@ export default {
     BSwiperBannerItems,
   },
   data() {
-    // Create array with 1000 slides
-    const slides = Array.from({ length: 7 }).map(
-      (el, index) => `Slide ${index + 1}`
-    );
     return {
-      slides,
+      slides: this.portfolioData,
       index: 0,
       controlledSwiper: null,
     };
   },
-  props: ["ChangeSwiperData", "data"],
+  mounted() {},
+  props: ["ChangeSwiperData", "portfolioData"],
   methods: {
     setSecondSwiper(swiper) {
       this.controlledSwiper = swiper;

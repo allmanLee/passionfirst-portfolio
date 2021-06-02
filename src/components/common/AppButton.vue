@@ -8,7 +8,7 @@ export default {
   props: ["contents", "styles"],
   methods: {
     eventEmit: function () {
-      this.$emit("clieked");
+      this.$emit("update");
     },
   },
 };
@@ -17,7 +17,6 @@ export default {
 .app-button {
   min-width: 100px;
   height: 46px;
-  box-sizing: border-box;
   display: inline-block;
   padding: 12px 21px;
   border: solid 1px black;
@@ -28,9 +27,29 @@ export default {
 .app-button-cta {
   color: white;
   border: none;
-  background-color: royalblue;
+  background-color: blueviolet;
+}
+.app-button-white {
+  background-color: white;
+  border: none;
 }
 .app-button-ghost {
   background-color: white;
+}
+//호버시
+@media (min-width: 768px) {
+  .app-button-cta:hover {
+    margin-top: -4px;
+    transform: scale(102%);
+    box-shadow: 0px 3px 20px #9e9e9e;
+  }
+  .app-button-ghost:hover {
+    transform: scale(102%);
+    box-shadow: 0px 3px 20px #9e9e9e;
+  }
+  .app-button-white:hover {
+    transform: scale(102%);
+    box-shadow: 0px 3px 20px #9e9e9e;
+  }
 }
 </style>

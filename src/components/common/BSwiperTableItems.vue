@@ -6,9 +6,19 @@
         <th>SOURCE</th>
         <th>RELATED KEYWORDS</th>
         <tr v-for="(item, index) in items" :key="index">
-          <td>CATEGORY</td>
-          <td>SOURCE</td>
-          <td>RELATED KEYWORDS</td>
+          <td>
+            <img
+              class="table-cate-img"
+              :src="
+                require(`../../assets/img/icon-img/1x/${item.TableCate}.png`)
+              "
+              alt="icon"
+            />
+          </td>
+          <td>
+            <a href="#">{{ item.TableSource }}</a>
+          </td>
+          <td>{{ item.TableRelated }}</td>
         </tr>
       </table>
     </div>
@@ -18,7 +28,7 @@
 export default {
   data() {
     return {
-      items: ["1", "2"],
+      items: this.portfolioData.TableItems,
     };
   },
   props: ["portfolioData"],
@@ -56,5 +66,12 @@ export default {
 }
 .table-item > tr > td {
   padding: 20px;
+  vertical-align: middle;
+  font-family: "Roboto";
+  font-size: 16px;
+}
+.table-cate-img {
+  width: 30px;
+  height: 30px;
 }
 </style>
