@@ -9,10 +9,9 @@
   </div>
 </template>
 <script>
-// import { defineComponent } from "@vue/composition-api";
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
-export default defineComponent({
+export default {
   data() {
     return {};
   },
@@ -20,7 +19,7 @@ export default defineComponent({
     AppHeader,
     AppFooter,
   },
-});
+};
 </script>
 
 <style lang="scss"></style>
