@@ -121,12 +121,12 @@
   </div>
 </template>
 <script>
-import Swiper from "swiper/bundle";
+import SwiperSkill from "swiper/bundle";
 import "swiper/swiper-bundle.css";
 export default {
   name: "MainBanner",
   mounted() {
-    new Swiper(".swiper-container", {
+    new SwiperSkill(".swiper-container", {
       spaceBetween: 20,
       autoplay: {
         delay: 5000,

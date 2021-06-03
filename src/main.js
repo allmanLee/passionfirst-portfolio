@@ -5,7 +5,8 @@ import store from "./store";
 
 import "./assets/css/reset.css";
 import "./assets/css/base.css";
-import "./assets/css/reset-d.css";
+//import "./assets/css/reset-d.css";
+
 // Import Swiper styles
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
@@ -20,9 +21,6 @@ import SwiperCore, {
   EffectFade,
 } from "swiper";
 
-
-
 SwiperCore.use([Navigation, Pagination, Controller, EffectFade]);
-
 
 createApp(App).use(store).use(router).mount("#app");
