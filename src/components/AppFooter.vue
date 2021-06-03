@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <footer id="appFooter">
     <p>&copy; 2021 Dahye Portfolio</p>
   </footer>
@@ -19,3 +20,11 @@ footer {
   align-items: center;
 }
 </style>
+=======
+  <div id="appFooter"></div>
+</template>
+<script>
+export default {};
+</script>
+<style lang="scss" scoped></style>
+>>>>>>> cf34cfe (about 생성)

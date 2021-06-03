@@ -9,6 +9,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+<<<<<<< HEAD
+=======
+    "jquery": "^3.6.0",
+    "swiper": "^6.7.0",
+>>>>>>> cf34cfe (about 생성)
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
