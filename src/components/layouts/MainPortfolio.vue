@@ -45,7 +45,6 @@ import portfolioDB from "../../assets/data/portfolio.json";
 // Import Swiper Vue.js components - swiper-banner
 import BSwiperBanner from "../common/BSwiperBanner";
 import BSwiperTable from "../common/BSwiperTable";
-
 export default {
   data() {
     return {
@@ -63,15 +62,12 @@ export default {
     BSwiperTable,
   },
   watch: {
-    // changedCate: function (cate) {
-    //   let changedArr = portfolioDB.data.filter((val) => {
-    //     return val.Cate.includes(cate);
-    //   });
-    //   setTimeout(() => {
-    //     this.portfolioData = changedArr;
-    //     console.log(changedArr);
-    //   }, 1000);
-    // },
+    changedCate: function (cate) {
+      let changedArr = portfolioDB.data.filter((val) => {
+        return val.Cate.includes(cate);
+      });
+      this.portfolioData = changedArr;
+    },
   },
   methods: {
     ChangedSwiperFirst: function (val) {

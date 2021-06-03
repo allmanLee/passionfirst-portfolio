@@ -56,7 +56,7 @@
       </div>
       <!-- skill desktop -->
       <div class="skill-inner-mobile-tablet">
-        <div class="swiper-container">
+        <div id="swiper-container" class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="slide-skill-box">
@@ -122,11 +122,11 @@
 </template>
 <script>
 import SwiperSkill from "swiper/bundle";
-import "swiper/swiper-bundle.css";
+
 export default {
   name: "MainBanner",
   mounted() {
-    new SwiperSkill(".swiper-container", {
+    new SwiperSkill("#swiper-container", {
       spaceBetween: 20,
       autoplay: {
         delay: 5000,

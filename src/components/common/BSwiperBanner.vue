@@ -32,6 +32,12 @@ export default {
     SwiperSlide,
     BSwiperBannerItems,
   },
+  watch: {
+    portfolioData: function (val) {
+      console.log(val);
+      this.slides = this.portfolioData;
+    },
+  },
   data() {
     return {
       slides: this.portfolioData,

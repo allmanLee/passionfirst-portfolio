@@ -1,8 +1,27 @@
 <template>
   <div id="mainPortfolio">
-    <!-- <div id="cate-gnb">
-      <app-button></app-button>
-    </div> -->
+    <div class="portfolio-top">
+      <div class="banner-buttons">
+        <input
+          id="pc-btn"
+          type="radio"
+          name="cate"
+          class="btn-2"
+          v-model="changedCate"
+          value="PC"
+          checked
+        /><label for="pc-btn" @click="changeCate">PC</label>
+        <input
+          id="mobile-btn"
+          type="radio"
+          name="cate"
+          class="btn-2"
+          v-model="changedCate"
+          value="Mobile"
+        />
+        <label for="mobile-btn" @click="changeCate">Mobile</label>
+      </div>
+    </div>
     <div id="portfolioBanner">
       <m-swiper-banner
         :ChangeSwiperData="b"
@@ -29,6 +48,7 @@ export default {
       indexChanged: 0,
       a: null,
       b: null,
+      changedCate: "PC",
       portfolioData: portfolioDB.data,
     };
   },
@@ -37,7 +57,14 @@ export default {
     MSwiperBanner,
     MSwiperTable,
   },
-  computed: {},
+  watch: {
+    changedCate: function (cate) {
+      let changedArr = portfolioDB.data.filter((val) => {
+        return val.Cate.includes(cate);
+      });
+      this.portfolioData = changedArr;
+    },
+  },
   methods: {
     ChangedSwiperFirst: function (val) {
       this.a = val;
@@ -58,5 +85,44 @@ export default {
 #portfolioBanner {
   width: 100%;
   height: 400px;
+}
+
+//banner-button css
+.banner-buttons {
+  position: absolute;
+  height: 48px;
+  margin: 40px auto 20px auto;
+  float: right;
+  padding-right: 20px;
+  z-index: 20;
+}
+.btn-2 {
+  margin-top: 10px;
+}
+label {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+  min-width: 60px;
+  height: 48px;
+  line-height: 48px;
+  border: 1px solid #9e9e9e;
+  padding-left: 21px;
+  padding-right: 21px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: white;
+  opacity: 0.6;
+  color: #9e9e9e;
+}
+input {
+  display: none;
+  opacity: 1;
+}
+input:checked + label {
+  background-color: white;
+  opacity: 1;
+  color: black;
 }
 </style>

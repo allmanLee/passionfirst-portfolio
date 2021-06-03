@@ -8,10 +8,7 @@ import "./assets/css/base.css";
 //import "./assets/css/reset-d.css";
 
 // Import Swiper styles
-import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/effect-fade/effect-fade.scss";
+import "swiper/swiper-bundle.css";
 
 // Import Swiper Vue.js components
 import SwiperCore, {

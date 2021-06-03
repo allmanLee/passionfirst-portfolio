@@ -122,7 +122,7 @@ input[type="submit"]:hover {
   }
   .email-m-text {
     display: block;
-    font-size: 40px;
+    font-size: 28px;
     font-weight: 900;
     font-family: "Roboto";
     margin-top: 80px;

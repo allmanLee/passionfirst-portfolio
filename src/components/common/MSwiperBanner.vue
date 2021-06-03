@@ -31,6 +31,12 @@ export default {
     SwiperSlide,
     MSwiperBannerItems,
   },
+  watch: {
+    portfolioData: function (val) {
+      console.log(val);
+      this.slides = this.portfolioData;
+    },
+  },
   data() {
     // Create array with 1000 slides
     return {
