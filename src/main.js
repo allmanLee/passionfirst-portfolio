@@ -6,6 +6,12 @@ import store from "./store";
 import "./assets/css/reset.css";
 import "./assets/css/base.css";
 
+// Import Swiper styles
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/effect-fade/effect-fade.scss";
+
 // Import Swiper Vue.js components
 import SwiperCore, {
   Navigation,
@@ -14,11 +20,7 @@ import SwiperCore, {
   EffectFade,
 } from "swiper";
 
-// Import Swiper styles
-import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/effect-fade/effect-fade.scss";
+
 
 SwiperCore.use([Navigation, Pagination, Controller, EffectFade]);
 
